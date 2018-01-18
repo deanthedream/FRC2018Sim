@@ -1,0 +1,18 @@
+%FRC2017main
+clear
+clc
+
+%generate the field stochastically
+f = genField();
+%generate node locations
+[n,ssl] = genNodes(f);
+
+%Generate All Robots In Simulation
+r = genRobots('');
+
+r.s = genStrategy('');
+
+
+
+%Run a Match
+out = runMatch();
