@@ -9,5 +9,4 @@ else
     goodnessLevel = 3;
 end
 r = robotDefaults(goodnessLevel);
-
 end

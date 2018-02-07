@@ -8,7 +8,15 @@ if(strcmp(scriptfile,''))%There is no Script so Generate Robots Based on Distrib
         %Generate robot distribution parameters statistically
         %first is this a "good robot"
         goodness = rand();
-        sr.r(i) = genRobot(goodness);
+        sr.r(i) = genRobot(goodness);  
+    end
+    for i = 1:6
+        sr.r(i).hascube = 1;%does the robot have a cube
+        if ismember(i,[1,2,3])
+            sr.r(i).alliance='red';
+        elseif(ismember(i,[4,5,6]))
+            sr.r(i).alliance='blue';
+        end
     end
 end
 end

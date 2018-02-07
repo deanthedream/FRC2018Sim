@@ -37,12 +37,12 @@ n.loc(21,:) = [fw-168,fh-82.5-plateh/2];%Top Plate BLUE Alliance Switch
 n.loc(22,:) = [fw-168,82.5+plateh/2];%bottom Plate BLUE Alliance Switch
 n.loc(23,:) = [fw-140+42/2,fw/2];%BLUE pile source
 n.loc(24,:) = [fw-48*cos(pi/4),fh-48*sin(pi/4)];%RED human block source
-n.loc(25,:) = [0,fh/2+48/3+12];%BLUE vault sink
+n.loc(25,:) = [fw,fh/2+48/3+12];%BLUE vault sink
 n.loc(26,:) = [fw-48*cos(pi/4),48*sin(pi/4)];%RED human block source
 
 %% Sink Locations Order goes: Vault, Alliance Switch, Scale, Opposing Switch
 ssl = struct();
-ssl.r.sinks(1,:) = n.loc(1,:);%red vault
+ssl.r.sinks(1,:) = n.loc(2,:);%red vault
 ssl.b.sinks(1,:) = n.loc(25,:);%blue vault
 if(f.s1.side)%the Red alliance switch top plate is BLUE
     ssl.r.sinks(2,:) = n.loc(6,:);
@@ -65,6 +65,27 @@ else%the Red alliance Switch top plate is BLUE
     ssl.r.sinks(4,:) = n.loc(22,:);
     ssl.b.sinks(2,:) = n.loc(21,:);
 end
+
+%% Sink Content and their Maximums
+ssl.r.sinksContent(1) = 0;%value
+ssl.r.sinksContent(2) = 0;%switch
+ssl.r.sinksContent(3) = 0;%scale
+ssl.r.sinksContent(4) = 0;%defense switch
+
+ssl.b.sinksContent(1) = 0;
+ssl.b.sinksContent(2) = 0;
+ssl.b.sinksContent(3) = 0;
+ssl.b.sinksContent(4) = 0;
+
+ssl.r.sinksContentMax(1) = 9;
+ssl.r.sinksContentMax(2) = 10;
+ssl.r.sinksContentMax(3) = 10;
+ssl.r.sinksContentMax(4) = 10;
+
+ssl.b.sinksContentMax(1) = 9;
+ssl.b.sinksContentMax(2) = 10;
+ssl.b.sinksContentMax(3) = 10;
+ssl.b.sinksContentMax(4) = 10;
 
 %% Source Locations Order goes: Pile, Your Side Column, Opposite Side Column, Human North, Human South
 ssl.r.source(1,:) = n.loc(4,:);%red pile
@@ -98,6 +119,40 @@ ssl.b.source(12,:) = n.loc(11,:);
 ssl.b.source(13,:) = n.loc(12,:);
 ssl.b.source(14,:) = n.loc(1,:);%blue human block source north
 ssl.b.source(15,:) = n.loc(3,:);%blue human block source south
+
+%% Source Content Order goes: Pile, Your Side Column, Opposite Side Column, Human North, Human South
+ssl.r.sourceContent(1) = 10;%red pile
+ssl.r.sourceContent(2) = 1;%red column of cubes
+ssl.r.sourceContent(3) = 1;
+ssl.r.sourceContent(4) = 1;
+ssl.r.sourceContent(5) = 1;
+ssl.r.sourceContent(6) = 1;
+ssl.r.sourceContent(7) = 1;
+ssl.r.sourceContent(8) = 1;%blue column of cubes
+ssl.r.sourceContent(9) = 1;
+ssl.r.sourceContent(10) = 1;
+ssl.r.sourceContent(11) = 1;
+ssl.r.sourceContent(12) = 1;
+ssl.r.sourceContent(13) = 1;
+ssl.r.sourceContent(14) = 7;%red human block source north
+ssl.r.sourceContent(15) = 7;%red human block source south
+
+ssl.b.sourceContent(1) = 10;%red pile
+ssl.b.sourceContent(2) = 1;%red column of cubes
+ssl.b.sourceContent(3) = 1;
+ssl.b.sourceContent(4) = 1;
+ssl.b.sourceContent(5) = 1;
+ssl.b.sourceContent(6) = 1;
+ssl.b.sourceContent(7) = 1;
+ssl.b.sourceContent(8) = 1;%blue column of cubes
+ssl.b.sourceContent(9) = 1;
+ssl.b.sourceContent(10) = 1;
+ssl.b.sourceContent(11) = 1;
+ssl.b.sourceContent(12) = 1;
+ssl.b.sourceContent(13) = 1;
+ssl.b.sourceContent(14) = 7;%red human block source north
+ssl.b.sourceContent(15) = 7;%red human block source south
+
 %end of function
 end
 

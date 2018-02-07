@@ -1,4 +1,4 @@
-%FRC2017main
+%FRC2018main
 %written by dean keithly
 clear
 clc
@@ -21,4 +21,4 @@ r = tmp;
 clear tmp
 
 %Run a Match
-out = runMatch();
+out = runMatch(r,n,ssl);
