@@ -15,10 +15,10 @@ r = genRobots('');
 r.s = genStrategy(r,'');%generate the strategy for each of the different robots being used
 
 %r.r.Locs
-tmp = struct()
+tmp = struct();
 tmp = initLocs(r,ssl);%generate initial locations based on alliance color and how close they are to where they want to go
 r = tmp;
 clear tmp
 
 %Run a Match
-out = runMatch(r,n,ssl);
+m = runMatch(r,n,ssl);

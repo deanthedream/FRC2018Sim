@@ -19,20 +19,20 @@ n.loc(5,:) = [168,fh-82.5-plateh/2];%Top Plate Red Alliance Switch
 n.loc(6,:) = [168,82.5+plateh/2];%bottom Plate Red Alliance Switch
 %RED alliance Power Cubes in column
 n.loc(7,:) = [168+platew+pcw/2,fh-82.5-pch/2];
-n.loc(8,:) = [168+platew+pcw/2,fh-82.5-1*(pch-pcCOLspacing)-pch/2];
-n.loc(9,:) = [168+platew+pcw/2,fh-82.5-2*(pch-pcCOLspacing)-pch/2];
-n.loc(10,:) = [168+platew+pcw/2,fh-82.5-3*(pch-pcCOLspacing)-pch/2];
-n.loc(11,:) = [168+platew+pcw/2,fh-82.5-4*(pch-pcCOLspacing)-pch/2];
-n.loc(12,:) = [168+platew+pcw/2,fh-82.5-5*(pch-pcCOLspacing)-pch/2];
+n.loc(8,:) = [168+platew+pcw/2,fh-82.5+1*(pch-pcCOLspacing)-pch/2];
+n.loc(9,:) = [168+platew+pcw/2,fh-82.5+2*(pch-pcCOLspacing)-pch/2];
+n.loc(10,:) = [168+platew+pcw/2,fh-82.5+3*(pch-pcCOLspacing)-pch/2];
+n.loc(11,:) = [168+platew+pcw/2,fh-82.5+4*(pch-pcCOLspacing)-pch/2];
+n.loc(12,:) = [168+platew+pcw/2,fh-82.5+5*(pch-pcCOLspacing)-pch/2];
 n.loc(13,:) = [fw/2,fh-71.57-plateh/2];%top scale location
 n.loc(14,:) = [fw/2,71.57+plateh/2];%bottom scale location
 %BLUE alliance Power Cubes in column
 n.loc(15,:) = [fw-(168+platew+pcw/2),fh-82.5-pch/2];
-n.loc(16,:) = [fw-(168+platew+pcw/2),fh-82.5-1*(pch-pcCOLspacing)-pch/2];
-n.loc(17,:) = [fw-(168+platew+pcw/2),fh-82.5-2*(pch-pcCOLspacing)-pch/2];
-n.loc(18,:) = [fw-(168+platew+pcw/2),fh-82.5-3*(pch-pcCOLspacing)-pch/2];
-n.loc(19,:) = [fw-(168+platew+pcw/2),fh-82.5-4*(pch-pcCOLspacing)-pch/2];
-n.loc(20,:) = [fw-(168+platew+pcw/2),fh-82.5-5*(pch-pcCOLspacing)-pch/2];
+n.loc(16,:) = [fw-(168+platew+pcw/2),fh-82.5+1*(pch-pcCOLspacing)-pch/2];
+n.loc(17,:) = [fw-(168+platew+pcw/2),fh-82.5+2*(pch-pcCOLspacing)-pch/2];
+n.loc(18,:) = [fw-(168+platew+pcw/2),fh-82.5+3*(pch-pcCOLspacing)-pch/2];
+n.loc(19,:) = [fw-(168+platew+pcw/2),fh-82.5+4*(pch-pcCOLspacing)-pch/2];
+n.loc(20,:) = [fw-(168+platew+pcw/2),fh-82.5+5*(pch-pcCOLspacing)-pch/2];
 n.loc(21,:) = [fw-168,fh-82.5-plateh/2];%Top Plate BLUE Alliance Switch
 n.loc(22,:) = [fw-168,82.5+plateh/2];%bottom Plate BLUE Alliance Switch
 n.loc(23,:) = [fw-140+42/2,fw/2];%BLUE pile source
@@ -152,6 +152,14 @@ ssl.b.sourceContent(12) = 1;
 ssl.b.sourceContent(13) = 1;
 ssl.b.sourceContent(14) = 7;%red human block source north
 ssl.b.sourceContent(15) = 7;%red human block source south
+
+%% Initialize Scores
+ssl.score.b.vault = 0;
+ssl.score.b.switch = 0;
+ssl.score.b.scale = 0;
+ssl.score.r.vault = 0;
+ssl.score.r.switch = 0;
+ssl.score.r.scale = 0;
 
 %end of function
 end

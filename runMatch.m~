@@ -30,10 +30,10 @@ while(t < tMatchEnd)
     blueScore = ssl.score.b.vault + ssl.score.b.switch + ssl.score.b.scale;%score sum for blue
     
     %Cubes Left On Field
-    RedSourceCubesLeft = sum(ssl.r.sourceContent);
-    BlueSourceCubesLeft = sum(ssl.b.sourceContent);
+    RedSourceCubesLeft = sum(ssl.r.sourceContent(9))
+    BlueSourceCubesLeft
     
-    mystr = strcat('t_last=',num2str(t_last),' t=',num2str(t),' NextEventTime=',num2str(r.r(robotNum).NextEventTime),' RobotNum=',num2str(robotNum),' state=',r.r(robotNum).state,' redScore=',num2str(redScore),' blueScore=',num2str(blueScore),' Red Source Cubes Left',num2str(RedSourceCubesLeft),' Blue Source Cubes Left',num2str(BlueSourceCubesLeft));
+    mystr = strcat('t_last=',num2str(t_last),' t=',num2str(t),' NextEventTime=',num2str(r.r(robotNum).NextEventTime),' RobotNum=',num2str(robotNum),' state=',r.r(robotNum).state,' redScore=',num2str(redScore),' blueScore=',num2str(blueScore));
     disp(mystr)
     if(t > tMatchEnd), break; end
 end
