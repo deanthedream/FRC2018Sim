@@ -2,7 +2,7 @@ function [ r ] = initLocs( r,ssl )
 %This function sets the initial locations of the robots in the field based
 %on their respective strategy
 %   Detailed explanation goes here
-loc = struct();
+%loc = struct();
 fw = 288+72+288;%field width
 t=0;%match time
 for i = 1:6

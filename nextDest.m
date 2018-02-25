@@ -3,7 +3,6 @@ function [ output ] = nextDest( robotNum,r,ssl,t )
 %occur
 if(r.r(robotNum).hascube == 1)%the robot has a cube in its possession
     for i = 1:4%iterate through priorities
-        disp(i)
         priority = r.s(robotNum).priority(i);%robot scoring priority
         switch priority
             case 1 %switch

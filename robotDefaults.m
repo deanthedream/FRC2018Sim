@@ -12,6 +12,7 @@ mbat = 13.8;%lb battery mass from andy mark
 mbump = 20;%lb bumper mass limit FRC manual
 r.m = (120+mbat+mbump)*0.453;%robot mass in kg
 r.Loc = [0,0];
+r.DestLoc = [0,0];%added to hopefully fix DestLoc Error
 
 %% Generate Robot Goodness Based Skills
 r.scaleScore = 0;%time in seconds if not able to do the task
