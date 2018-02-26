@@ -6,15 +6,16 @@ function [ m ] = runMatch( r,n,ssl )
 t = 0;%initialize time
 t_last = t;%initialize Last Time
 tMatchEnd = 120;%time is in seconds
-score = struct();
+scnt = 0;%save counter
+m = struct();
 
 %Start Match
 while(t < tMatchEnd)
     [val, robotNum] = min([r.r(:).NextEventTime]);%robotNum of the shortest time to the next place.
     t_last = t;%update last_t time
     t = r.r(robotNum).NextEventTime;%advance current t to next event time
-    r.r(robotNum).state = NextState(r,robotNum);%updates robot state
-    r.r(robotNum).Loc = r.r(robotNum).NextDest;%update robot position
+    r.r(robotNum).state = NextState(r,robotNum);%updates robot state according to opMode and previous state
+    r.r(robotNum).Loc = r.r(robotNum).NextDest;%update robot position to what the NextDest was
     
     %Update next destination for the robot
     tmp_output = nextDest(robotNum,r,ssl,t);%retrieve nextDest, NextEventDist, NextEventTime, and opMode
@@ -22,10 +23,10 @@ while(t < tMatchEnd)
     r.r(robotNum).NextEventDist = tmp_output{2};%update NextEventDist
     r.r(robotNum).NextEventTime = tmp_output{3};%update NextEventTime
     r.r(robotNum).opMode = tmp_output{4};%tmp_output(5:length(tmp_output));%update opMode
-    r.r(robotNum).state = tmp_output{5};%update state
+    ssl = tmp_output{5};%updates ssl
     
     %Score points
-    [ssl] = scorePoints(t, t_last, r, robotNum, ssl);
+    [ssl,r] = scorePoints(t, t_last, r, robotNum, ssl);
     redScore = ssl.score.r.vault + ssl.score.r.switch + ssl.score.r.scale;%score sum for red
     blueScore = ssl.score.b.vault + ssl.score.b.switch + ssl.score.b.scale;%score sum for blue
     
@@ -33,11 +34,17 @@ while(t < tMatchEnd)
     RedSourceCubesLeft = sum(ssl.r.sourceContent);
     BlueSourceCubesLeft = sum(ssl.b.sourceContent);
     
-    mystr = strcat('t_last=',num2str(t_last),' t=',num2str(t),' NextEventTime=',num2str(r.r(robotNum).NextEventTime),' RobotNum=',num2str(robotNum),' state=',r.r(robotNum).state,' redScore=',num2str(redScore),' blueScore=',num2str(blueScore),' Red Source Cubes Left',num2str(RedSourceCubesLeft),' Blue Source Cubes Left',num2str(BlueSourceCubesLeft));
+    mystr = strcat('t_last=',num2str(t_last,'%.1f'),' t=',num2str(t,'%.1f'),' NextEventTime=',num2str(r.r(robotNum).NextEventTime,'%.1f'),' RobotNum=',num2str(robotNum),' state=',pad(r.r(robotNum).state,14),' redScore=',num2str(redScore,'%.0f'),' blueScore=',num2str(blueScore,'%.0f'),' Red Source Cubes Left',num2str(RedSourceCubesLeft),' Blue Source Cubes Left',num2str(BlueSourceCubesLeft));
     disp(mystr)
-    if(t > tMatchEnd), break; end
+    
+    %Save Game Data to Vectors
+    scnt  = scnt+1;
+    m = saveGameStatus(m,scnt,r,ssl,t,redScore,blueScore);
+    
+    if(t > tMatchEnd), break; end%checks if match is over and ends the match
 end
 disp('Match Over')
+
 
 end
 

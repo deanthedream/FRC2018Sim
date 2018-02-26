@@ -12,7 +12,7 @@ mbat = 13.8;%lb battery mass from andy mark
 mbump = 20;%lb bumper mass limit FRC manual
 r.m = (120+mbat+mbump)*0.453;%robot mass in kg
 r.Loc = [0,0];
-r.DestLoc = [0,0];%added to hopefully fix DestLoc Error
+r.NextDest = [0,0];%added to hopefully fix DestLoc Error
 
 %% Generate Robot Goodness Based Skills
 r.scaleScore = 0;%time in seconds if not able to do the task
@@ -36,11 +36,11 @@ end%general acceleration to max speed is like 0.2sec or 0.1 sec
 if(r.d.speed < 0.1)%ensure speed is positive and nonzero
     r.d.speed = 0.1;
 end
-if(r.scaleScore < 0)%ensure speed is positive and nonzero
-    r.scaleScore = 0;
+if(r.scaleScore < 0)%ensure time is positive and nonzero
+    r.scaleScore = 0.1;
 end
-if(r.switchScore < 0)%ensure speed is positive and nonzero
-    r.switchScore = 0;
+if(r.switchScore < 0)%ensure time is positive and nonzero
+    r.switchScore = 0.1;
 end
 
 end

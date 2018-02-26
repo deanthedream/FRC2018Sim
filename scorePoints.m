@@ -1,4 +1,4 @@
-function [ssl] = scorePoints(t, t_last, r, robotNum, ssl)
+function [ssl,r] = scorePoints(t, t_last, r, robotNum, ssl)
 %Tally the points for this match
 %   Detailed explanation goes here
     deltat = t-t_last;%in seconds

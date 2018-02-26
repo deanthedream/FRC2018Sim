@@ -10,9 +10,9 @@ for i = 1:6
     tmp_output = nextDest(i,r,ssl,t);
     r.r(i).NextDest = [tmp_output{1}(1),tmp_output{1}(2)];
     if(strcmp(r.r(i).alliance,'red'))
-        r.r(i).Locs = [0,r.r(i).NextDest(2)];
+        r.r(i).Loc = [0,r.r(i).NextDest(2)];
     else%otherwise its blue alliance
-        r.r(i).Locs = [fw,r.r(i).NextDest(2)];
+        r.r(i).Loc = [fw,r.r(i).NextDest(2)];
     end
     r.r(i).NextEventDist = tmp_output{2};
     r.r(i).NextEventTime = tmp_output{3};

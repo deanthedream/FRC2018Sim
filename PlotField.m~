@@ -15,10 +15,8 @@ end
 %% Plot Field Edge
 figure(1)
 hold on
-%plot([0,fw,fw,0],[0,0,fh,fh],'k')
-%length([corner,fw-corner,fw,fw,fw-corner,corner,0,0,corner])
-%length([0,0,corner,fh-corner,fh,fh,fh-corner,corner,0])
-plot([corner,fw-corner,fw,fw,fw-corner,corner,0,0,corner],[0,0,corner,fh-corner,fh,fh,fh-corner,corner,0],'k')
+plot([0,fw,fw,0],[0,0,fh,fh],'k')
+plot([corner,fw-corner,fw,fw],[0,0,corner,])
 hold off
 axis('equal')
 
