@@ -1,6 +1,5 @@
 function [ output ] = nextDest( robotNum,r,ssl,t )
-%Returns the next Destination of the Robot, the time the next event will
-%occur
+%Returns the next Destination of the Robot, the time the next event will occur
 if(strcmp(r.r(robotNum).state,'mvmt'))%r.r(robotNum).hascube == 1)%the robot has a cube in its possession
     for i = 1:4%iterate through priorities
         priority = r.s(robotNum).priority(i);%robot scoring priority
@@ -110,7 +109,7 @@ elseif(strcmp(r.r(robotNum).state,'scoringSwitch') || strcmp(r.r(robotNum).state
 
 elseif(strcmp(r.r(robotNum).state,'getcube'))%the robot does not have a cube
     %find closest source
-    if(strcmp(r.r(robotNum).alliance,'red'))
+    if(strcmp(r.r(robotNum).alliance,'red') && sum(ssl.r.sourceContent) > 0)
         %calculate Closest Source
         DistanceToSources = zeros([1,15])+1000000;
         for l = 1:15%there are 15 sources
@@ -131,12 +130,12 @@ elseif(strcmp(r.r(robotNum).state,'getcube'))%the robot does not have a cube
         if(ismember(ind,2:7))
             ssl.b.sourceContent(ind+6) = ssl.b.sourceContent(ind+6) - 1;%need to subtract from both because it is a common cube between the two teams
         end
-    else%it is a blue robot
-        %calculate Closest Source
+    elseif(strcmp(r.r(robotNum).alliance,'blue') && sum(ssl.b.sourceContent) > 0)%it is a blue robot
+        %calculate Closest Blue Source
         DistanceToSources = zeros([1,15])+1000000;
         for l = 1:15%there are 15 sources
-            if(ssl.r.sourceContent(l)>0)
-                DistanceToSources(l) = norm(ssl.r.source(l,:)-r.r(robotNum).Loc(:));%calculates the distance to each source
+            if(ssl.b.sourceContent(l)>0)
+                DistanceToSources(l) = norm(ssl.b.source(l,:)-r.r(robotNum).Loc(:));%calculates the distance to each source
             else
                 DistanceToSources(l) = 1000000;%just a really large number
             end

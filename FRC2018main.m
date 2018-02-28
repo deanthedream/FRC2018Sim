@@ -31,4 +31,7 @@ PlotField()
 % Analyze Game
 %need to create some kind of analysis of the information and run multiple
 %scripts. Maybe save all data in structure to some file.
+singleMatchAnalysis()
+
+saveMultiMatchAnalysisData()
 

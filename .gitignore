@@ -1,0 +1,6 @@
+#ignore .m~ files
+*.m~
+
+
+#ignore output dat files
+*.dat
