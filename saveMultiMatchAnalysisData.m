@@ -1,5 +1,5 @@
 %% Name of file to save to
-fname = strcat('match',num2str(cputime*100),'.dat');
+fname = strcat('/home/dean/FRC2018Sim/','match',num2str(cputime*100),'.dat');
 
 lm = length(m);
 redScore = m(lm).redScore;%redScore at end of match

@@ -3,6 +3,11 @@
 clear
 clc
 
+for count = 1:1000%for running many matches
+    clear
+    clc
+    close all
+    
 %% generate the field stochastically
 f = genField();
 
@@ -34,4 +39,6 @@ PlotField()
 singleMatchAnalysis()
 
 saveMultiMatchAnalysisData()
+
+end
 
